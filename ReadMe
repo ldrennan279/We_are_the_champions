@@ -1,0 +1,26 @@
+Build a Sales endorsement page to celebrate people success.
+
+The App focus
+1.Build from scratch using figma design
+2.Use Firebase realtime database from Google
+3.App needs to update in real time
+4.add a from and to input feild
+5.Reverse order of endorsements so that most recent endorsement goes to the top of the feed
+6.add likes feature to endoresment, make sure it can only be slelected once.
+7.Final step is make it scalable to table and desktop
+
+HTML Setup
+1.added Logo for tilte tab
+2.created a header section for the main logo and App tilte
+3.Created 2 sections, 1 for input fields and the 2nd for the endoresment feed
+4.Add css link in head
+5.added js script in head with defer and type module for importing and exporting.
+
+CSS Setup
+1.set the setting for the page - margin, padding, box sizing, use-select.
+2.Imported goolge fonts
+3.applied display flex to body and flex direction of column
+4.Set flex on header with direction of column
+5.Centered header elements with justify content
+6.Applied styling to logo
+7.Applied styling to H1
