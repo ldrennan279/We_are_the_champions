@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/freddie_logo.png" type="image/icon type">   
     <link rel="stylesheet" href="index.css"> 
-    <script src="index.js" defer></script>
+    <script src="index.js" defer type="module"></script>
     <title>We Are the Champions</title>
 </head>
 <body>
@@ -16,10 +16,15 @@
     </header>
     <main>
         <section class="input_section" id="input_section">
-
+            <textarea name="main-input" id="main-input" cols="10" rows="5" placeholder="Write your endorsement here" class="main-input" id="main-input"></textarea>
+            <div class="sub-section-from-to">
+                <input type="text" class="from-input" placeholder="From">
+                <input type="text" class="to-input" placeholder="To">
+            </div>
+            <button class="publish-btn" id="publish-btn">Publish</button>
         </section>
         <section class="feed_section" id="feed_section">
-
+            <h2 class="feed-title">- Endorsement -</h2>
         </section>
     </main>
 </body>
