@@ -66,7 +66,8 @@ header{
     display: flex;
 }
 
-.input_section{
+.input_section,
+.feed_section{
     margin: auto;
     max-width: 26.875em;
     flex-direction: column;
@@ -110,4 +111,27 @@ header{
 /* //////////// */
 .feed_section{
     margin-top: 0.9375em ;
+}
+.endorsementBox{
+    margin: 10px;
+    background-color:  #FFFFFF ;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
+.endorsement-to,
+.endorsement-text{
+    margin-bottom: 10px;
+}
+.endorsement-to,
+.endorsement-from{
+    font-weight: bold;
+}
+.likes-section{
+display: flex;
+justify-content: space-between;
+}
+.likes{
+    font-size: 16px;
+    font-weight: bold;
 }

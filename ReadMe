@@ -1,5 +1,7 @@
 Build a Sales endorsement page to celebrate people success.
 
+Link to figma file: https://www.figma.com/file/Hz7HNtjYqUDrd6eaAgntdr/We-are-the-Champions-(Copy)?type=design&node-id=0-1&t=6ubHTOHEuOPvsHLe-0
+
 The App focus
 1.Build from scratch using figma design
 2.Use Firebase realtime database from Google
@@ -15,6 +17,9 @@ HTML Setup
 3.Created 2 sections, 1 for input fields and the 2nd for the endoresment feed
 4.Add css link in head
 5.added js script in head with defer and type module for importing and exporting.
+6.Added input text area's to section 1 with class and placeholder
+7.Added button for submitting endorsement
+8.Adjusted Main section to have sperate div for from and to input for display settings in css
 
 CSS Setup
 1.set the setting for the page - margin, padding, box sizing, use-select.
@@ -24,3 +29,22 @@ CSS Setup
 5.Centered header elements with justify content
 6.Applied styling to logo
 7.Applied styling to H1
+8.set display settings on input section ot flex, with set max-width and margin auto for centralising.
+9.Applied margins, padding, border-raduis, color, text alignment to input-section.
+10.Change Main input from input to textarea to align text at top of input area. could not find a work round in input for text align that would work.
+11.applying colour and text sizing to input fields.
+
+Feed section
+1.Set H2 heading for feed - applied size, font family, weight & text-align
+2.Endorsements will be dynamically created in JS
+
+JS Setup
+1.setup firebase
+2.access elements in dom
+3.function set up to clear input fields
+4.saved each input value to let
+5.saved each let with input value stored to object and then pushed to firebase database.
+6.setup HTML to be added to feed section.
+
+additional CSS setup
+1.Set endorsement boxes - Font sytling, margins, padding
