@@ -48,3 +48,9 @@ JS Setup
 
 additional CSS setup
 1.Set endorsement boxes - Font sytling, margins, padding
+
+Additional JS setup
+1.Setup up onValue to capture snapshot from firebase.
+2.setup array to hold data from firebase with snapshot values
+3.add onValue function to assEnodrsementToFeildSection
+4.
