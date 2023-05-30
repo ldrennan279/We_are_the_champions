@@ -1,9 +1,12 @@
-import { v4 as uuidv4 } from "uuid";
+
 
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 
 import {getDatabase, ref, push, onValue} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
+import { v4 as uuidId} from "https://jspm.dev/uuid"
+
+let feedMessageId = uuidId()
 
 const appSettings = {
     databaseURL: 'https://we-are-the-champions-fe824-default-rtdb.europe-west1.firebasedatabase.app/'
@@ -23,12 +26,11 @@ publishBtnEl.addEventListener('click', ()=>{
     let endorsementText = mainInputEl.value
     let fromText = fromInputEl.value
     let toText = toInputEl.value
-    let feedMessageId = uuidv4()
-    console.log(feedMessageId)
+    
    
     if(endorsementText && fromText && toText){
        let endorsementObject = {
-        uuid: `${uuidv4()}`,
+        uuid: `${feedMessageId}`,
         personFrom: `${fromText}`,
         personTo: `${toText}`,
         endorsement: `${endorsementText}`

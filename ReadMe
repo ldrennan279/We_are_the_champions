@@ -53,4 +53,4 @@ Additional JS setup
 1.Setup up onValue to capture snapshot from firebase.
 2.setup array to hold data from firebase with snapshot values
 3.Revesed order of array with reverse() method so that new next was add to the top of the feed.
-4.
+4.Add Likes counter and Heart Logo
