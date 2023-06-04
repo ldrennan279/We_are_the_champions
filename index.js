@@ -29,7 +29,8 @@ publishBtnEl.addEventListener('click', ()=>{
         uuid: `${feedMessageId}`,
         personFrom: `${fromText}`,
         personTo: `${toText}`,
-        endorsement: `${endorsementText}`
+        endorsement: `${endorsementText}`,
+        status: "true"
         }
         push(endorsementListDB, endorsementObject) 
     }
@@ -48,8 +49,8 @@ onValue(endorsementListDB,  function(snapshot){
                 <div class="likes-section">
                     <h3 class="endorsement-from">${item.personFrom}</h3>
                     <p class="likes">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" id="${item.uuid}" /></svg>
-                        <span>0</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" id="${item.status}" /></svg>
+                        <span id="totalLikes">0</span>
                     </p>
                 </div>
             </div>
@@ -60,7 +61,14 @@ onValue(endorsementListDB,  function(snapshot){
     
 
 document.addEventListener('click', (e)=>{
- 
+    let messageId = e.target.id
+    console.log(messageId)
+    const messageIdSelected = document.getElementById(`${messageId}`)
+    const totalLikesDisplay = document.getElementById("totalLikes")
+    if(messageId){
+        messageIdSelected.classList.add("redHeart")
+        totalLikesDisplay.textContent++
+    } 
 })
 
 function clearInputFields(){
