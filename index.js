@@ -57,18 +57,12 @@ onValue(endorsementListDB,  function(snapshot){
         
         `
     })
+
     })
     
-
+// work on data attributes
 document.addEventListener('click', (e)=>{
-    let messageId = e.target.id
-    console.log(messageId)
-    const messageIdSelected = document.getElementById(`${messageId}`)
-    const totalLikesDisplay = document.getElementById("totalLikes")
-    if(messageId){
-        messageIdSelected.classList.add("redHeart")
-        totalLikesDisplay.textContent++
-    } 
+  
 })
 
 function clearInputFields(){
