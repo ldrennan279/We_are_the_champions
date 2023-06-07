@@ -11,6 +11,7 @@ const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const endorsementListDB = ref(database, "endorsementList")
 
+
 const mainInputEl = document.getElementById('main-input')
 const fromInputEl = document.getElementById('from-input')
 const toInputEl = document.getElementById('to-input')
@@ -30,7 +31,8 @@ publishBtnEl.addEventListener('click', ()=>{
         personFrom: `${fromText}`,
         personTo: `${toText}`,
         endorsement: `${endorsementText}`,
-        status: "true"
+        status: "true",
+        totalLikes: 0
         }
         push(endorsementListDB, endorsementObject) 
     }
@@ -49,21 +51,31 @@ onValue(endorsementListDB,  function(snapshot){
                 <div class="likes-section">
                     <h3 class="endorsement-from">${item.personFrom}</h3>
                     <p class="likes">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" id="${item.status}" /></svg>
-                        <span id="totalLikes">0</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" data-like="${item.uuid}" /></svg>
+                        <span>${item.totalLikes}</span>
                     </p>
                 </div>
             </div>
-        
         `
     })
 
-    })
-    
-// work on data attributes
-document.addEventListener('click', (e)=>{
-  
+    document.addEventListener('click', (e)=>{
+    if(e.target.dataset.like){
+        handleLikeClicks(e.target.dataset.like)
+    }
 })
+
+function handleLikeClicks(itemId){
+    const like = endorsementArray.filter((endorsement)=>{
+        return endorsement.uuid === itemId
+    })[0]
+    // setup increment for likes. Color change.   
+}
+})
+    
+
+
+
 
 function clearInputFields(){
     mainInputEl.value = ""
