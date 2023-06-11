@@ -43,6 +43,7 @@ onValue(endorsementListDB,  function(snapshot){
     let endorsementArray = Object.values(snapshot.val())
     let endorsementArrayReverse = endorsementArray.reverse()
     feedSection.innerHTML = ""
+    function render(){
     endorsementArrayReverse.forEach((item)=>{
           feedSection.innerHTML += `
             <div class="endorsementBox" >
@@ -58,6 +59,9 @@ onValue(endorsementListDB,  function(snapshot){
             </div>
         `
     })
+}
+
+render()
 
     document.addEventListener('click', (e)=>{
     if(e.target.dataset.like){
@@ -70,6 +74,10 @@ function handleLikeClicks(itemId){
         return endorsement.uuid === itemId
     })[0]
     // setup increment for likes. Color change.   
+    like.totalLikes++
+    feedSection.innerHTML = ""
+    render()
+    // read Firebase web support documentation. understand how to keep increments once updated and page is refreshed.
 }
 })
     
