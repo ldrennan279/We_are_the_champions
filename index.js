@@ -2,7 +2,7 @@ import { v4 as uuidId} from "https://jspm.dev/uuid"
 
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 
-import {getDatabase, ref, push, onValue} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import {getDatabase, ref, push, onValue, update} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: 'https://we-are-the-champions-fe824-default-rtdb.europe-west1.firebasedatabase.app/'
@@ -73,11 +73,17 @@ function handleLikeClicks(itemId){
     const like = endorsementArray.filter((endorsement)=>{
         return endorsement.uuid === itemId
     })[0]
-    // setup increment for likes. Color change.   
-    like.totalLikes++
-    feedSection.innerHTML = ""
-    render()
-    // read Firebase web support documentation. understand how to keep increments once updated and page is refreshed.
+    if(like.status){
+        like.totalLikes++
+        like.status = false
+        console.log("liked")
+    } else {
+        like.totalLikes--
+        like.status = true
+    }
+    
+    return update(ref(database, endorsementListDB.key.status), like)
+    
 }
 })
     
