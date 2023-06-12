@@ -82,7 +82,7 @@ function handleLikeClicks(itemId){
         like.status = true
     }
     
-    return update(ref(database, endorsementListDB.key.status), like)
+    return update(ref(database, `endorsementList/${itemId}`), like)
     
 }
 })
