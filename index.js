@@ -11,7 +11,6 @@ const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const endorsementListDB = ref(database, "endorsementList")
 
-
 const mainInputEl = document.getElementById('main-input')
 const fromInputEl = document.getElementById('from-input')
 const toInputEl = document.getElementById('to-input')
@@ -63,6 +62,8 @@ onValue(endorsementListDB,  function(snapshot){
 
 render()
 
+
+
     document.addEventListener('click', (e)=>{
     if(e.target.dataset.like){
         handleLikeClicks(e.target.dataset.like)
@@ -73,10 +74,10 @@ function handleLikeClicks(itemId){
     const like = endorsementArray.filter((endorsement)=>{
         return endorsement.uuid === itemId
     })[0]
+    console.log(like)
     if(like.status){
         like.totalLikes++
         like.status = false
-        console.log("liked")
     } else {
         like.totalLikes--
         like.status = true
