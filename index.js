@@ -1,5 +1,3 @@
-import { v4 as uuidId} from "https://jspm.dev/uuid"
-
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 
 import {getDatabase, ref, push, onValue, update} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
@@ -16,7 +14,7 @@ const fromInputEl = document.getElementById('from-input')
 const toInputEl = document.getElementById('to-input')
 const publishBtnEl = document.getElementById('publish-btn')
 const feedSection = document.getElementById('feed_section')
-let feedMessageId = uuidId()
+
 
 publishBtnEl.addEventListener('click', ()=>{
     let endorsementText = mainInputEl.value
@@ -26,7 +24,6 @@ publishBtnEl.addEventListener('click', ()=>{
    
     if(endorsementText && fromText && toText){
        let endorsementObject = {
-        uuid: `${feedMessageId}`,
         personFrom: `${fromText}`,
         personTo: `${toText}`,
         endorsement: `${endorsementText}`,
@@ -39,20 +36,24 @@ publishBtnEl.addEventListener('click', ()=>{
 })
 
 onValue(endorsementListDB,  function(snapshot){
-    let endorsementArray = Object.values(snapshot.val())
+    let endorsementArray = Object.entries(snapshot.val())
     let endorsementArrayReverse = endorsementArray.reverse()
+    console.log(endorsementArray)
+    
     feedSection.innerHTML = ""
     function render(){
     endorsementArrayReverse.forEach((item)=>{
+        let currentItemId = item[0]
+        let currentItemvalue = item[1]
           feedSection.innerHTML += `
             <div class="endorsementBox" >
-                <h3 class="endorsement-to">${item.personTo}</h3>
-                <p class="endorsement-text">${item.endorsement}</p>
+                <h3 class="endorsement-to">${currentItemvalue.personTo}</h3>
+                <p class="endorsement-text">${currentItemvalue.endorsement}</p>
                 <div class="likes-section">
-                    <h3 class="endorsement-from">${item.personFrom}</h3>
+                    <h3 class="endorsement-from">${currentItemvalue.personFrom}</h3>
                     <p class="likes">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" data-like="${item.uuid}" /></svg>
-                        <span>${item.totalLikes}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" data-like="${currentItemId}" /></svg>
+                        <span>${currentItemvalue.totalLikes}</span>
                     </p>
                 </div>
             </div>
@@ -72,18 +73,18 @@ render()
 
 function handleLikeClicks(itemId){
     const like = endorsementArray.filter((endorsement)=>{
-        return endorsement.uuid === itemId
+        return endorsement === itemId
     })[0]
     console.log(like)
-    if(like.status){
-        like.totalLikes++
-        like.status = false
-    } else {
-        like.totalLikes--
-        like.status = true
-    }
+    // if(like.status){
+    //     like.totalLikes++
+    //     like.status = false
+    // } else {
+    //     like.totalLikes--
+    //     like.status = true
+    // }
     
-    return update(ref(database, `endorsementList/${itemId}`), like)
+    // return update(ref(database, `endorsementList/${itemId}`), like)
     
 }
 })
