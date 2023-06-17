@@ -38,7 +38,6 @@ publishBtnEl.addEventListener('click', ()=>{
 onValue(endorsementListDB,  function(snapshot){
     let endorsementArray = Object.entries(snapshot.val())
     let endorsementArrayReverse = endorsementArray.reverse()
-    console.log(endorsementArray)
     
     feedSection.innerHTML = ""
     function render(){
@@ -52,46 +51,46 @@ onValue(endorsementListDB,  function(snapshot){
                 <div class="likes-section">
                     <h3 class="endorsement-from">${currentItemvalue.personFrom}</h3>
                     <p class="likes">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 24"><path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z" data-like="${currentItemId}" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                        width="13" height="11" viewBox="0 0 24 24">
+                            <path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 
+                            7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 
+                            0-7.327-9.17-8.972-12-3.27z" data-like="${currentItemId}" />
+                        </svg>
                         <span>${currentItemvalue.totalLikes}</span>
                     </p>
                 </div>
             </div>
         `
     })
+
+
 }
 
 render()
 
 
 
-    document.addEventListener('click', (e)=>{
+document.addEventListener('click', (e)=>{
     if(e.target.dataset.like){
         handleLikeClicks(e.target.dataset.like)
     }
 })
 
 function handleLikeClicks(itemId){
-    const like = endorsementArray.filter((endorsement)=>{
-        return endorsement === itemId
-    })[0]
-    console.log(like)
-    // if(like.status){
-    //     like.totalLikes++
-    //     like.status = false
-    // } else {
-    //     like.totalLikes--
-    //     like.status = true
-    // }
+    console.log(itemId)
+    let endorsementArray = Object.entries(snapshot.val())
+    console.log(endorsementArray)
+    // if()
+    if(itemId){
+        itemId.status = false
+        itemId.totalLikes++
+    } 
     
-    // return update(ref(database, `endorsementList/${itemId}`), like)
+
     
 }
 })
-    
-
-
-
 
 function clearInputFields(){
     mainInputEl.value = ""
