@@ -80,14 +80,22 @@ document.addEventListener('click', (e)=>{
 function handleLikeClicks(itemId){
     const itemRef = ref(database, `endorsementList/${itemId}`);
 
+ 
+
     get(itemRef).then((snapshot) => {
-      const currentLikes = snapshot.val().totalLikes;
-      
-      update(itemRef, {
-        status: false,
-        totalLikes: currentLikes + 1
-      })
-    })
+        const currentLikes = snapshot.val().totalLikes;
+           
+        get(itemRef).then((snapshot) => {
+            const currentLikes = snapshot.val().totalLikes;
+            
+            update(itemRef, {
+              status: false,
+              totalLikes: currentLikes + 1
+            })
+          })
+    
+    
+})
 }
 
 
