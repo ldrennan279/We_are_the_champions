@@ -67,10 +67,6 @@ onValue(endorsementListDB,  function(snapshot){
 render()
 })
 
-
-
-
-
 document.addEventListener('click', (e)=>{
     if(e.target.dataset.like){
         handleLikeClicks(e.target.dataset.like)
@@ -80,22 +76,25 @@ document.addEventListener('click', (e)=>{
 function handleLikeClicks(itemId){
     const itemRef = ref(database, `endorsementList/${itemId}`);
 
- 
-
     get(itemRef).then((snapshot) => {
-        const currentLikes = snapshot.val().totalLikes;
-           
-        get(itemRef).then((snapshot) => {
             const currentLikes = snapshot.val().totalLikes;
+            const objectDetails = snapshot.val();
+            console.log(objectDetails)
             
-            update(itemRef, {
-              status: false,
-              totalLikes: currentLikes + 1
-            })
-          })
-    
-    
+            if(objectDetails.status){
+                
+                update(itemRef, {
+                    status: false,
+                    totalLikes: currentLikes + 1
+                })
+            } else {
+                update(itemRef, {
+                    status: true,
+                    totalLikes: currentLikes - 1
+                })
+            }
 })
+    
 }
 
 
