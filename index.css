@@ -138,4 +138,5 @@ justify-content: space-between;
 }
 .heart{
     cursor: pointer;
+    background: red;
 }
