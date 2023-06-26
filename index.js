@@ -55,7 +55,7 @@ onValue(endorsementListDB,  function(snapshot){
                         width="13" height="11" viewBox="0 0 24 24">
                             <path d="M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 
                             7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 
-                            0-7.327-9.17-8.972-12-3.27z" data-like="${currentItemId}" id="${currentItemId}" class="heart"/>
+                            0-7.327-9.17-8.972-12-3.27z" id="${currentItemId}" class="heart"/>
                         </svg>
                         <span>${currentItemvalue.totalLikes}</span>
                     </p>
@@ -67,40 +67,38 @@ onValue(endorsementListDB,  function(snapshot){
 render()
 })
 
+
 document.addEventListener('click', (e)=>{
-    if(e.target.dataset.like){
-        handleLikeClicks(e.target.dataset.like)
+    if(e.target.id){
+        handleLikeClicks(e.target.id)
     }
 })
 
-function handleLikeClicks(itemId){
-    console.log("clicked item", itemId)
+function handleLikeClicks(itemId) {
     const itemRef = ref(database, `endorsementList/${itemId}`);
-    const item = itemId
-    const heartIcon = document.getElementById(item)
-    console.log("heart Icon:", heartIcon )
+    const heartIcon = document.getElementById(itemId);
+    console.log(heartIcon);
 
     get(itemRef).then((snapshot) => {
-            const currentLikes = snapshot.val().totalLikes;
-            const objectDetails = snapshot.val();
-            
-            
-            if(objectDetails.status){
-                heartIcon.setAttribute('fill', 'red')
-                update(itemRef, {
-                    status: false,
-                    totalLikes: currentLikes + 1
-                })
-            } else {
-                
-                update(itemRef, {
-                    status: true,
-                    totalLikes: currentLikes - 1
-                })
-            }
-})
-    
+        const currentLikes = snapshot.val().totalLikes;
+        const objectDetails = snapshot.val();
+
+        if (objectDetails.status) {
+            heartIcon.style.fill = "red";
+            update(itemRef, {
+                status: false,
+                totalLikes: currentLikes + 1
+            });
+        } else {
+            heartIcon.style.fill = ""; // Reset to default color
+            update(itemRef, {
+                status: true,
+                totalLikes: currentLikes - 1
+            });
+        }
+    });
 }
+
 
 
 function clearInputFields(){
