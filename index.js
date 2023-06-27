@@ -28,7 +28,8 @@ publishBtnEl.addEventListener('click', ()=>{
         personTo: `${toText}`,
         endorsement: `${endorsementText}`,
         status: "true",
-        totalLikes: 0
+        totalLikes: 0,
+        heartStatus: ""
         }
         push(endorsementListDB, endorsementObject) 
     }
@@ -51,7 +52,7 @@ onValue(endorsementListDB,  function(snapshot){
                 <div class="likes-section">
                     <h3 class="endorsement-from">${currentItemvalue.personFrom}</h3>
                     <p class="likes">
-                        <i class="fa-solid fa-heart" id="${currentItemId}"></i>
+                        <i class="fa-solid fa-heart heart ${currentItemvalue.heartStatus}" id="${currentItemId}"></i>
                         <span>${currentItemvalue.totalLikes}</span>
                     </p>
                 </div>
@@ -71,23 +72,25 @@ document.addEventListener('click', (e)=>{
 
 function handleLikeClicks(itemId) {
     const itemRef = ref(database, `endorsementList/${itemId}`);
-    const heartIcon = document.getElementById(itemId);
-    console.log(heartIcon);
+    console.log(itemRef)
+    
 
     get(itemRef).then((snapshot) => {
         const currentLikes = snapshot.val().totalLikes;
         const objectDetails = snapshot.val();
 
         if (objectDetails.status) {
-            heartIcon.style.backgroundColor = "red"
             update(itemRef, {
                 status: false,
-                totalLikes: currentLikes + 1
-            });
+                totalLikes: currentLikes + 1,
+                heartStatus: "liked"
+            })
+            document.getElementById(itemId).classList.add("liked")
         } else {
             update(itemRef, {
                 status: true,
-                totalLikes: currentLikes - 1
+                totalLikes: currentLikes - 1,
+                heartStatus: ""
             });
         }
     });
