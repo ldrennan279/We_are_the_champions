@@ -51,7 +51,7 @@ onValue(endorsementListDB,  function(snapshot){
                 <div class="likes-section">
                     <h3 class="endorsement-from">${currentItemvalue.personFrom}</h3>
                     <p class="likes">
-                        <i class="fa-solid fa-heart" id="${currentItemId}></i>
+                        <i class="fa-solid fa-heart" id="${currentItemId}"></i>
                         <span>${currentItemvalue.totalLikes}</span>
                     </p>
                 </div>
@@ -79,13 +79,12 @@ function handleLikeClicks(itemId) {
         const objectDetails = snapshot.val();
 
         if (objectDetails.status) {
-            heartIcon.style.fill = "red";
+            heartIcon.style.backgroundColor = "red"
             update(itemRef, {
                 status: false,
                 totalLikes: currentLikes + 1
             });
         } else {
-            heartIcon.style.fill = ""; // Reset to default color
             update(itemRef, {
                 status: true,
                 totalLikes: currentLikes - 1
