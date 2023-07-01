@@ -16,19 +16,27 @@
         <h1>We are the Champions</h1>
     </header>
     <main>
-        <section class="input_section" id="input_section">
-            <textarea name="main-input" id="main-input" cols="10" rows="5" placeholder="Write your endorsement here" class="main-input" id="main-input"></textarea>
-            <div class="sub-section-from-to">
-                <input type="text" class="from-input" id="from-input" placeholder="From">
-                <input type="text" class="to-input" id="to-input" placeholder="To">
-            </div>
-            <button class="publish-btn" id="publish-btn">Publish</button>
-        </section>
-        <h2 class="feed-title">- Endorsement -</h2>
-        <section class="feed_section" id="feed_section">
-            <p class="likes">
-            </p>
-        </section>
+        <section class="main-section">
+            <sub class="input_section" id="input_section">
+                <textarea name="main-input" id="main-input" cols="10" rows="5" placeholder="Write your endorsement here" class="main-input" id="main-input" required></textarea>
+                <div class="sub-section-from-to">
+                    <input type="text" class="from-input" id="from-input" placeholder="From" required>
+                    <input type="text" class="to-input" id="to-input" placeholder="To" required>
+                </div>
+                <button class="publish-btn" id="publish-btn">Publish</button>
+            </sub>
+            <section class="feed">
+                 <h2 class="feed-title">- Endorsement -</h2>
+                <sub class="feed_section" id="feed_section">
+                    <p class="likes">
+                    </p>
+                </sub>
+            </section>
+        </section>    
+        <aside class="name-in-lights" id="name-in-lights">
+            
+        </aside>
     </main>
+    
 </body>
 </html>

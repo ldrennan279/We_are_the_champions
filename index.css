@@ -70,7 +70,7 @@ header{
 .input_section,
 .feed_section,
 header,
-main{
+.main{
     margin: auto;
     max-width: 26.875em;
     flex-direction: column;
@@ -116,7 +116,8 @@ main{
     margin-top: 0.9375em ;
 }
 .endorsementBox{
-    margin: 10px;
+    max-width: 24.875em;
+    margin: 10px auto;
     background-color:  #FFFFFF ;
     padding: 10px;
     font-size: 14px;
@@ -144,8 +145,89 @@ justify-content: space-between;
 .liked{
     color: rgb(228, 0, 125);
 }
+.name-in-lights{
+    display: none;
+}
 
 /* //////////// */
 /* Web Version  */
 /* //////////// */
 
+@media (min-width: 1200px) {
+    body{
+        margin: auto;
+        max-width: 1200px;
+        position: relative;
+    }
+    main{
+        display: flex;
+        flex-direction: row;
+    }
+    .main-section{
+        max-width: 20.875em;
+        height: 600px;
+        padding: 10px;
+        right: 50px;
+    }
+    .publish-btn{
+        margin: 0.1875em;
+        padding: 0.425em;
+    }
+    .feed{
+        height: 370px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    .endorsementBox{
+        max-width: 20.875em;
+        margin: 5px;  
+    }
+    .name-in-lights{
+        position: relative;
+        margin: auto;
+        display: block;
+        padding: 20px;
+    }
+    h2{
+        color: #FFFFFF;
+        padding: 10px;
+        text-align: center;
+    }
+    .main_logo{
+        opacity: 0.7;
+        width: 7.875em;
+        height: 10.125em;
+    }
+    h1{
+        position: absolute;
+        font-size: 90px;
+        font-weight: 100;
+        width: 100%;
+        left: 28%;
+        top: 15%;
+        transform: translate(-10%, -50%);
+    }
+    .name-in-lights-like{
+        position: absolute;
+        background-color: #ffffff44;
+        color:#FFFFFF;
+        text-align: center;
+        bottom: 12%;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 10px;
+        width: 95%;
+        margin: auto;
+        font-size: 16px;
+        font-weight: 100;
+        text-shadow: 1px 1px grey;
+    }
+   .name-in-lights-name{
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: black;
+    font-size: 96px;
+   }
+}

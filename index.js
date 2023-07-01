@@ -59,6 +59,19 @@ onValue(endorsementListDB,  function(snapshot){
             </div>
         `
     })
+    const nameInLights = document.getElementById("name-in-lights")
+    const array = endorsementArrayReverse[0]
+    const rockStar = array[1]
+    nameInLights.innerHTML = `
+        <H2>Today's Rock Stars</H2>
+        <img src="images/Magic_Hearts_Gif_Animation.gif" alt="">
+        <h3 class="name-in-lights-name">${rockStar.personTo}<h3>
+        <p class="name-in-lights-like">
+            ${rockStar.endorsement}
+        </p>
+        <h2>From ${rockStar.personFrom}</h2>
+    `
+
 }
 render()
 })
@@ -72,7 +85,6 @@ document.addEventListener('click', (e)=>{
 
 function handleLikeClicks(itemId) {
     const itemRef = ref(database, `endorsementList/${itemId}`);
-    console.log(itemRef)
     
 
     get(itemRef).then((snapshot) => {
