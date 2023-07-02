@@ -9,7 +9,7 @@ The App focus
 4.add a from and to input feild
 5.Reverse order of endorsements so that most recent endorsement goes to the top of the feed
 6.add likes feature to endoresment, make sure it can only be selected once.
-7.Final step is make it scalable to table and desktop
+7.Final step is make it scalable to desktop
 
 HTML Setup
 1.added Logo for tilte tab
@@ -46,6 +46,7 @@ JS Setup
 5.saved each let with input value stored to object and then pushed to firebase database.
 6.setup HTML to be added to feed section.
 
+
 additional CSS setup
 1.Set endorsement boxes - Font sytling, margins, padding
 
@@ -54,3 +55,10 @@ Additional JS setup
 2.setup array to hold data from firebase with snapshot values
 3.Revesed order of array with reverse() method so that new next was add to the top of the feed.
 4.Add Likes counter and Heart Logo
+5.Create like function so that it up updates firebase and flips the booleen each time heart is clicked.
+
+Main Learnings from project:
+01. Setting up firebase data base
+02. Uploading, retriving data from firebase
+03. removing aan object from and array
+04. Struggled with if statement and fliping booleen. Eventually got it through trail and error. I even used chat GPT but this was unable to identify that the order was wrong and would not allow the function to work. Humans are still needed.lol
